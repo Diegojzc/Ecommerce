@@ -13,9 +13,9 @@ import java.util.List;
 public interface OrderproductMapper {
 
     @Mappings({
-            @Mapping(source = "pk.productEntity", target = "product"),
-            @Mapping(source="quantity ", target = "quantity"),
-            @Mapping(source = "pk.orderEntity", target = "order")
+            @Mapping(source ="pk.productEntity", target ="product"),
+            @Mapping(source="quantity", target = "quantity"),
+            @Mapping(source ="pk.orderEntity", target = "order")
     })
 
     OrderProduct toOrderProduct(OrderProductEntity orderProductEntity);

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Embeddable
 public class OrderProductPK implements Serializable {
 
-    private static final long serialVersionUID = -1597542359330067501L;
+
     @ManyToOne (fetch = FetchType.LAZY)
     private OrderEntity orderEntity;
     @ManyToOne (fetch = FetchType.LAZY)
