@@ -1,26 +1,24 @@
 package com.icodeap.ecommerce.application.service;
-
 import com.icodeap.ecommerce.domain.User;
 import com.icodeap.ecommerce.domain.UserType;
-import com.icodeap.ecommerce.infrastructure.dto.UserDto;
 
-public class Loginservice {
+public class LoginService {
 
-    private UserService userService;
+    private final UserService userService;
 
-    public Loginservice(UserService userService) {
+    public LoginService(UserService userService) {
         this.userService = userService;
     }
 
-    public boolean existUser(UserDto userDto){
+    public boolean existUser(String email){
         try{
-            User user = userService.findByEmail(userDto.getEmail());
+            User user = userService.findByEmail(email);
         }catch (Exception e){
             return false;
         }
-
-        return false;
+        return true;
     }
+
 
     public Integer getUserId(String email){
         try{
@@ -31,8 +29,8 @@ public class Loginservice {
 
     }
 
-    public UserType getUserType(UserDto userDto){
-        return userService.findByEmail(userDto.getEmail()).getUserType();
+    public UserType getUserType(String email){
+        return userService.findByEmail(email).getUserType();
     }
 
     public User getUser(String email){
@@ -40,6 +38,13 @@ public class Loginservice {
            return userService.findByEmail(email);
         }catch (Exception e){
          return new User();
+        }
+    }
+    public User getUser(Integer id){
+        try{
+            return userService.findById(id);
+        }catch (Exception e){
+            return new User();
         }
     }
 }
