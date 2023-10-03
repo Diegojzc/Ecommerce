@@ -56,4 +56,8 @@ public class BeanConfiguration {
         return  new RegistrationService(userService);
 
     }
+    @Bean
+    public Loginservice loginservice(UserService userService){
+        return new Loginservice(userService);
+    }
 }
