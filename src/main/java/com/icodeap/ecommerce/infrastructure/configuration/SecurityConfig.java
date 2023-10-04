@@ -33,7 +33,8 @@ public class SecurityConfig {
         httpSecurity.csrf().disable().authorizeHttpRequests().requestMatchers("/admin/**").
                 hasRole("ADMIN").requestMatchers("/user/**").hasRole("USER").
                 anyRequest().permitAll().
-                and().formLogin().loginPage("/login").defaultSuccessUrl("/login/access");
+                and().formLogin().loginPage("/login").defaultSuccessUrl("/login/access").and().logout()
+                .logoutSuccessUrl("/close");
         return httpSecurity.build();
 
     }

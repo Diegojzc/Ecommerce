@@ -61,4 +61,8 @@ public class BeanConfiguration {
     public LoginService loginservice(UserService userService){
         return new LoginService(userService);
     }
+    @Bean
+    public LogoutService logoutService(){
+        return new LogoutService();
+    }
 }
