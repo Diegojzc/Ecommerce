@@ -9,4 +9,6 @@ import java.util.List;
 public interface OrderCrudProductRepository extends CrudRepository<OrderProductEntity,Integer> {
 
     List<OrderProductEntity> findByPkOrderEntity(OrderEntity orderEntity);
+
+
 }

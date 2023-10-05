@@ -14,5 +14,5 @@ public class OrderEntity {
     private Integer id;
     private LocalDateTime dateCreated;
     @ManyToOne
-    private UserEntity userEntity;
+    private UserEntity user;
 }

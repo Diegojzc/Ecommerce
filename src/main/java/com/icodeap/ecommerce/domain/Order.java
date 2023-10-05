@@ -10,15 +10,15 @@ import java.util.List;
 public class Order {
     private Integer id;
     private LocalDateTime dateCreated;
-    List<OrderProduct> orderProducts;
+    private List<OrderProduct> orderProducts;
     private User user;
 
-    public void AddOrdersProduct(List<OrderProduct> orderProducts){
+    public void addOrdersProduct(List<OrderProduct> orderProducts){
         this.setOrderProducts(orderProducts);
     }
     public BigDecimal getTotalOrderPrice(){
         return getOrderProducts().stream().map(
-                        OrderProduct::getTotalPrice).
+                        p->p.getTotalPrice()).
                         reduce(BigDecimal.ZERO, BigDecimal::add);
 
     }

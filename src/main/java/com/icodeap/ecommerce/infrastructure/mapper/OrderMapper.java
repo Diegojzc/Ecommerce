@@ -14,7 +14,7 @@ public interface OrderMapper {
             {
                     @Mapping(source = "id", target = "id"),
                     @Mapping(source = "dateCreated", target = "dateCreated"),
-                    @Mapping(source = "userEntity", target = "user")
+                    @Mapping(source = "user", target = "user")
             }
     )
     Order toOrder(OrderEntity orderEntity);

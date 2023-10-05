@@ -3,6 +3,7 @@ package com.icodeap.ecommerce.infrastructure.controller;
 import com.icodeap.ecommerce.application.service.ProductService;
 import com.icodeap.ecommerce.application.service.StockService;
 import com.icodeap.ecommerce.domain.Stock;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,16 +25,27 @@ public class HomeController {
     }
 
     @GetMapping
-    public String home(Model model) {
+    public String home(Model model, HttpSession httpSession) {
         model.addAttribute("products", productService.getProduct());
+        try {
+            model.addAttribute("id",httpSession.getAttribute("iduser").toString());
+        }catch (Exception e){
+
+        }
+
         return "home";
     }
     @GetMapping("/product-detail/{id}")
-    public String productDetail(@PathVariable Integer id, Model model) {
+    public String productDetail(@PathVariable Integer id, Model model,HttpSession httpSession) {
         List<Stock> stocks = stockService.getStockByProduct(productService.getProductById(id));
         Integer lastBalance= stocks.get(stocks.size()-1).getBalance();
         model.addAttribute("product", productService.getProductById(id));
         model.addAttribute("stock", lastBalance);
+        try {
+            model.addAttribute("id",httpSession.getAttribute("iduser").toString());
+        }catch (Exception e){
+
+        }
         return "user/productdetail";
     }
 

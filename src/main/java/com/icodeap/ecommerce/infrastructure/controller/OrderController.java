@@ -54,8 +54,9 @@ public class OrderController {
 
     @GetMapping("/create-order")
     public String createOrder(HttpSession httpSession, RedirectAttributes attributes){
-        log.info("Id user desde la sesion:{}",httpSession.getAttribute("iduser").toString());
         log.info("create order..");
+        log.info("Id user desde la sesion:{}",httpSession.getAttribute("iduser").toString());
+
         //obetener user temporal
         User user = userService.findById(Integer.parseInt(httpSession.getAttribute("iduser").toString()));
         //order

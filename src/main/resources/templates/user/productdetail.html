@@ -21,78 +21,73 @@
 
 <body>
 
-  <!-- Navigation -->
-  <div th:insert= "~{user/template_user::header}"></div>
+<!-- Navigation -->
+<div th:insert = "~{user/template_user::header}" th:if="${id==null}"></div>
 
-    <!-- Page Content -->
-    <div class="container">
+<div th:insert = "~{user/template_user::userlogged}" th:unless="${id==null}"></div>
 
-
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Producto</small>
-      </h1>
-
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item active">Producto</li>
-      </ol>
-
-      <!-- Blog Post -->
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <a href="#"> <img class="img-fluid rounded"
-               th:src="@{/images/{img} (img=${product.image})}"  alt="">
-              </a>
-            </div>
-            <div class="col-lg-6">
-              <form th:action="@{/user/cart/add-product}" method="POST">
-			  <input type="hidden" th:value="${product.id}" name="idProduct">
-			  <input type="hidden" th:value="${product.name}" name="nameProduct">
-                <input type="hidden" th:value="${product.price}" name="price">
-
-                <h2 class="card-title" th:text="${product.name}"></h2>
-
-                <ul class="list-group">
-                  <li class="list-group-item"><h5 th:text=" 'Precio : $' + ${product.price}"></h5></li>
-                  <li class="list-group-item"><h5 th:text=" 'Stock : ' + ${stock} + ' unidades'"></h5></li>
-                  <li class="list-group-item">
-                    <p th:text=" 'Descripción: ' + ${product.description}"></p>
-                  </li>
-                  <li class="list-group-item"><h6>
-                    Cantidad: <input type="number" id="quantity" name="quantity" autocomplete="off"
-                    min="1" max="5" value="1">
-                  </h6></li>
-                </ul>
+<!-- Page Content -->
+<div class="container">
 
 
-                <button type="submit"  class="btn btn-dark">Añadir al carrito </button>
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">
+    Spring eCommerce <small>Producto</small>
+  </h1>
 
-              </form>
-            </div>
-          </div>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+    <li class="breadcrumb-item active">Producto</li>
+  </ol>
+
+  <!-- Blog Post -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6">
+          <a href="#"> <img class="img-fluid rounded"
+                            th:src="@{/images/{img}  (img = ${product.image})} "  alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <form th:action="@{/user/cart/add-product}" method="POST">
+            <input type="hidden" th:value="${product.id}" name="idProduct">
+            <input type="hidden" th:value="${product.name}" name="nameProduct">
+            <input type="hidden" th:value="${product.price}" name="price">
+
+            <h2 class="card-title" th:text="${product.name}"></h2>
+
+            <ul class="list-group">
+              <li class="list-group-item"><h5 th:text=" 'Precio : $'+ ${product.price}"></h5></li>
+              <li class="list-group-item"><h5 th:text=" 'Stock : '+ ${stock}+ ' unidades'"></h5></li>
+              <li class="list-group-item">
+                <p th:text="'Descripción: '+ ${product.description}"></p>
+              </li>
+              <li class="list-group-item"><h6>
+                Cantidad: <input type="number" id="quantity" name="quantity" autocomplete="off"
+                                 min="1" max="5" value="1">
+              </h6></li>
+            </ul>
+
+
+            <button type="submit"  class="btn btn-dark">Añadir al carrito </button>
+
+          </form>
         </div>
       </div>
-
-
     </div>
-    <!-- /.container -->
+  </div>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Spring eCommerce 2020</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-  <div th:insert="~{user/template_user::footer}"></div>
 
-  <!-- Bootstrap core JavaScript -->
-  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</div>
+<!-- /.container -->
 
-  </body>
+<!-- Footer -->
+<div th:insert="~{user/template_user::footer}"></div>
 
-  </html>
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
